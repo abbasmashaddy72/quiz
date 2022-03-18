@@ -11,6 +11,7 @@ use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class QuestionsOptionsTable extends LivewireDatatable
 {
+    protected $listeners = ['refreshQuestionsOptionsTable' => '$refresh'];
     public $model = QuestionsOption::class;
     public $exportable = true;
 

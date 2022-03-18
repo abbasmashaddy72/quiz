@@ -47,6 +47,7 @@ class QuestionCru extends Component
             'more_info_link' => $this->more_info_link,
         ]);
 
+        $this->emit('refreshQuestionsTable');
         $this->resetInput();
     }
 
@@ -74,6 +75,7 @@ class QuestionCru extends Component
                 'more_info_link' => $this->more_info_link,
             ]);
 
+            $this->emit('refreshQuestionsTable');
             $this->resetInput();
             $this->updateMode = false;
         }

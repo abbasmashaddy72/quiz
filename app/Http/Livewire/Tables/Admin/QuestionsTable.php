@@ -10,6 +10,7 @@ use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class QuestionsTable extends LivewireDatatable
 {
+    protected $listeners = ['refreshQuestionsTable' => '$refresh'];
     public $model = Question::class;
     public $exportable = true;
 

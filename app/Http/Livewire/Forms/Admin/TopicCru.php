@@ -37,6 +37,7 @@ class TopicCru extends Component
             'title' => $this->title,
         ]);
 
+        $this->emit('refreshTopicsTable');
         $this->resetInput();
     }
 
@@ -58,6 +59,7 @@ class TopicCru extends Component
                 'title' => $this->title,
             ]);
 
+            $this->emit('refreshTopicsTable');
             $this->resetInput();
             $this->updateMode = false;
         }

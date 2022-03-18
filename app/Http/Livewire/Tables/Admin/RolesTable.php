@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 
 class RolesTable extends LivewireDatatable
 {
+    protected $listeners = ['refreshRolesTable' => '$refresh'];
     public $model = Role::class;
     public $exportable = true;
 

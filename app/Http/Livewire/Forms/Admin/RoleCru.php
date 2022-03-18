@@ -37,6 +37,7 @@ class RoleCru extends Component
             'name' => $this->name,
         ]);
 
+        $this->emit('refreshRolesTable');
         $this->resetInput();
     }
 
@@ -57,6 +58,7 @@ class RoleCru extends Component
                 'name' => $this->name,
             ]);
 
+            $this->emit('refreshRolesTable');
             $this->resetInput();
             $this->updateMode = false;
         }

@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-admin.table-card>
         <x-slot name="title">
-            {{ __('Results') }}
+            {{ __('Images') }}
         </x-slot>
-        @livewire('tables.admin.results-table')
+        @livewire('forms.admin.images')
     </x-admin.table-card>
 </x-app-layout>

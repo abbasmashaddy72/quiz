@@ -43,6 +43,7 @@ class QuestionsOptionCru extends Component
             'correct' => $this->correct ?? 0,
         ]);
 
+        $this->emit('refreshQuestionsOptionsTable');
         $this->resetInput();
     }
 
@@ -67,6 +68,7 @@ class QuestionsOptionCru extends Component
                 'option' => $this->option,
                 'correct' => $this->correct,
             ]);
+            $this->emit('refreshQuestionsOptionsTable');
             $this->resetInput();
             $this->updateMode = false;
         }

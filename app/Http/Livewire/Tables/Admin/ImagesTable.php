@@ -2,21 +2,21 @@
 
 namespace App\Http\Livewire\Tables\Admin;
 
-use App\Models\Topic;
+use App\Models\Image;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 
-class TopicsTable extends LivewireDatatable
+class ImagesTable extends LivewireDatatable
 {
-    protected $listeners = ['refreshTopicsTable' => '$refresh'];
-    public $model = Topic::class;
+    protected $listeners = ['refreshImagesTable' => '$refresh'];
+    public $model = Image::class;
     public $exportable = true;
 
     public function builder()
     {
-        return Topic::query();
+        return Image::query();
     }
 
     public function columns()
@@ -27,17 +27,22 @@ class TopicsTable extends LivewireDatatable
                 ->defaultSort('desc')
                 ->filterable(),
 
-            Column::name('title')
+            Column::callback(['image'], function ($image) {
+                return view('admin.image-view', ['image' => $image]);
+            })->unsortable()->label('Image'),
+
+            Column::name('model')
                 ->searchable()
                 ->filterable()
-                ->label('Title'),
+                ->label('Related To'),
+
+            Column::name('model_id')
+                ->searchable()
+                ->filterable()
+                ->label('Related To ID'),
 
             DateColumn::name('created_at')
                 ->filterable(),
-
-            Column::callback(['id'], function ($id) {
-                return view('admin.actions.topic', ['id' => $id]);
-            })->excludeFromExport()->unsortable()->label('Action'),
         ];
     }
 }

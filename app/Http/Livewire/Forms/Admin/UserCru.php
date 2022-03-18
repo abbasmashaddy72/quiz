@@ -44,6 +44,7 @@ class UserCru extends Component
             'password' => Hash::make($this->password),
         ]);
 
+        $this->emit('refreshUsersTable');
         $this->resetInput();
     }
 
@@ -69,6 +70,7 @@ class UserCru extends Component
                 'password' => Hash::make($this->password),
             ]);
 
+            $this->emit('refreshUsersTable');
             $this->resetInput();
             $this->updateMode = false;
         }

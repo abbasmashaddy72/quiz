@@ -91,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\H
     Route::resource('role', 'RoleController');
 
     Route::resource('topic', 'TopicController');
+    Route::resource('image', 'ImageController');
     Route::resource('question', 'QuestionController');
     Route::resource('questions_option', 'QuestionsOptionController');
 

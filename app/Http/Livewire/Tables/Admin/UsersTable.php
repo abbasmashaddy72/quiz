@@ -10,6 +10,7 @@ use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class UsersTable extends LivewireDatatable
 {
+    protected $listeners = ['refreshUsersTable' => '$refresh'];
     public $model = User::class;
     public $exportable = true;
 
