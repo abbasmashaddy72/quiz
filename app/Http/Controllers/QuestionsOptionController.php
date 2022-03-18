@@ -15,7 +15,7 @@ class QuestionsOptionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.question_option');
     }
 
     /**
@@ -25,7 +25,7 @@ class QuestionsOptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.forms.questions-option-cru');
     }
 
     /**
@@ -47,7 +47,7 @@ class QuestionsOptionController extends Controller
      */
     public function show(QuestionsOption $questionsOption)
     {
-        //
+        return view('admin.forms.questions-option-cru');
     }
 
     /**
@@ -58,7 +58,7 @@ class QuestionsOptionController extends Controller
      */
     public function edit(QuestionsOption $questionsOption)
     {
-        //
+        return view('admin.forms.questions-option-cru');
     }
 
     /**

@@ -10,11 +10,16 @@ class Result extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'question_id', 'option_id', 'correct', 'date'];
+    protected $fillable = ['user_id', 'topic_id', 'question_id', 'option_id', 'correct', 'date'];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class, 'topic_id');
     }
 
     public function question()

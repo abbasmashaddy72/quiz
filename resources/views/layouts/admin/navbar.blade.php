@@ -106,8 +106,8 @@
                                 <div class="hidden ml-4 rtl:ml-0 rtl:mr-4 md:block">
                                     <h6 class="mb-0 text-base font-medium dark:text-gray-600">
                                         {{ Auth::user()->name }}</h6>
-                                    {{-- <p class="mb-0 text-lg text-gray-600 caption-sub-title dark:text-white">
-                                        {{ Auth::user()->rolePermissions->name }} --}}
+                                    <p class="mb-0 text-lg text-gray-600 caption-sub-title dark:text-white">
+                                        {{ auth()->user()->roles->pluck('name')[0] ?? 'Not Assigned' }}
                                     </p>
                                 </div>
                             </a>

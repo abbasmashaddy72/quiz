@@ -15,7 +15,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.topic');
     }
 
     /**
@@ -25,7 +25,7 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.forms.topic-cru');
     }
 
     /**
@@ -47,7 +47,7 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        //
+        return view('admin.forms.topic-cru');
     }
 
     /**
@@ -58,7 +58,7 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        //
+        return view('admin.forms.topic-cru');
     }
 
     /**

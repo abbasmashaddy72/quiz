@@ -82,20 +82,17 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
 // After Login
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware('auth')
-    ->name('dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\Http\Controllers'], function () {
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-// Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\Http\Controllers'], function () {
-//     Route::get('homepage', 'Miscellaneous@homepage')->name('homepage.edit');
-//     Route::get('about', 'Miscellaneous@about')->name('admin.about');
-//     Route::get('terms', 'Miscellaneous@terms')->name('admin.terms');
-//     Route::get('privacy', 'Miscellaneous@privacy')->name('admin.privacy');
-//     Route::get('contacted_us', 'Miscellaneous@contactedUs')->name('contacted.us');
-//     Route::get('booked_appointment', 'Miscellaneous@bookedAppointment')->name('booked.appointment');
-//     Route::resource('blog', 'BlogController');
-//     Route::resource('review', 'ReviewController');
-//     Route::resource('service', 'ServiceController');
-//     Route::resource('static-option', 'StaticOptionController');
-//     Route::post('image_upload', 'Miscellaneous@image_upload')->name('ckeditor.upload');
-// });
+    Route::resource('user', 'UserController');
+    Route::post('user-permission-update/{id}', 'UserController@updatePermission')->name('user-permission-update');
+
+    Route::resource('role', 'RoleController');
+
+    Route::resource('topic', 'TopicController');
+    Route::resource('question', 'QuestionController');
+    Route::resource('questions_option', 'QuestionsOptionController');
+
+    Route::resource('result', 'ResultController');
+});

@@ -15,7 +15,7 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.result');
     }
 
     /**
@@ -25,7 +25,7 @@ class ResultController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.forms.result-cru');
     }
 
     /**
@@ -47,7 +47,7 @@ class ResultController extends Controller
      */
     public function show(Result $result)
     {
-        //
+        return view('admin.forms.result-cru');
     }
 
     /**
@@ -58,7 +58,7 @@ class ResultController extends Controller
      */
     public function edit(Result $result)
     {
-        //
+        return view('admin.forms.result-cru');
     }
 
     /**
