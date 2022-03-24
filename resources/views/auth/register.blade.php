@@ -1,57 +1,85 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-            </a>
-        </x-slot>
+    <div class="flex-auto w-full md:w-2/4">
+        <div class="flex flex-wrap justify-center">
+            <div class="flex-auto px-4 md:px-10">
+                <div
+                    class="relative flex flex-col justify-center mb-0 overflow-hidden bg-white rounded-lg shadow-none card-transparent xl:px-24">
+                    <div class="flex-auto p-10">
+                        <!--Logo start-->
+                        <a href="/" class="flex items-center py-1 mb-4 mr-4 text-xl whitespace-nowrap">
+                            <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
+                        </a>
+                        <h2 class="mb-2 text-3xl font-medium text-center">Sign In</h2>
+                        <p class="mb-4 text-center text-gray-600">Login to stay connected.</p>
+                        <!-- Session Status -->
+                        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="flex flex-wrap">
+                                <!-- Name -->
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="name" label="Name" autofocus />
+                                    </div>
+                                </div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+                                <!-- Phone -->
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="phone" label="Phone" type="number" />
+                                    </div>
+                                </div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+                                <!-- Email Address -->
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="email" label="Email" />
+                                    </div>
+                                </div>
 
-                <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required
-                    autofocus />
+                                <!-- Password -->
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="password" label="Password" type="hidden" value="password" />
+                                    </div>
+                                </div>
+
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="password_confirmation" label="Confirm Password"
+                                            type="hidden" value="password" />
+                                    </div>
+                                </div>
+
+                                <!-- Class -->
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-checkbox name="interest" label="Are You Interested in Islamic Class?" />
+                                    </div>
+                                </div>
+
+                                <!-- Remember Me & Forgot Password -->
+                                <div class="flex justify-between flex-auto w-full">
+                                    <div class="block pl-6 mb-4">
+                                        <a class="text-sm text-gray-600 underline hover:text-gray-900"
+                                            href="{{ route('login') }}">
+                                            {{ __('Already registered?') }}
+                                        </a>
+                                    </div>
+
+                                    <x-admin.submit-button>
+                                        {{ __('Register') }}
+                                    </x-admin.submit-button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block w-full mt-1" type="password" name="password" required
-                    autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block w-full mt-1" type="password"
-                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-admin.submit-button>
-                    {{ __('Register') }}
-                </x-admin.submit-button>
-            </div>
-        </form>
-    </x-auth-card>
+        </div>
+    </div>
+    <div class="flex-auto hidden w-2/4 h-screen p-0 -mt-1 overflow-hidden bg-blue-500 md:block">
+        <img src="{{ asset('images/auth/01.png') }}" class="object-cover w-full h-full" alt="images">
+    </div>
 </x-guest-layout>

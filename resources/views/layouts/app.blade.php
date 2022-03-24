@@ -27,7 +27,10 @@
     @include('layouts.admin.loader')
 
     <div>
-        @include('layouts.admin.sidebar')
+        @role('competitor')
+        @else
+            @include('layouts.admin.sidebar')
+        @endrole
         <main class="flex flex-col justify-between h-screen main-content" x-data="{ data: true }">
             <div class="relative">
                 @include('layouts.admin.navbar')

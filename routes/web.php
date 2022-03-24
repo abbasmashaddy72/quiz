@@ -95,5 +95,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'App\H
     Route::resource('question', 'QuestionController');
     Route::resource('questions_option', 'QuestionsOptionController');
 
+    Route::resource('quiz', 'QuizController');
     Route::resource('result', 'ResultController');
 });
