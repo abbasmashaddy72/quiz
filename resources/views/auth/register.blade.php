@@ -5,12 +5,8 @@
                 <div
                     class="relative flex flex-col justify-center mb-0 overflow-hidden bg-white rounded-lg shadow-none card-transparent xl:px-24">
                     <div class="flex-auto p-10">
-                        <!--Logo start-->
-                        <a href="/" class="flex items-center py-1 mb-4 mr-4 text-xl whitespace-nowrap">
-                            <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-                        </a>
-                        <h2 class="mb-2 text-3xl font-medium text-center">Sign In</h2>
-                        <p class="mb-4 text-center text-gray-600">Login to stay connected.</p>
+                        <h2 class="mb-2 text-3xl font-medium text-center">Getting Started with Quiz</h2>
+                        <p class="mb-4 text-center text-gray-600">Please Fill All the Below Details.</p>
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -28,6 +24,12 @@
                                 <div class="flex-auto w-full">
                                     <div class="mb-4">
                                         <x-form-input name="phone" label="Phone" type="number" />
+                                    </div>
+                                </div>
+
+                                <div class="flex-auto w-full">
+                                    <div class="mb-4">
+                                        <x-form-input name="age" label="Age" />
                                     </div>
                                 </div>
 
@@ -60,16 +62,9 @@
                                 </div>
 
                                 <!-- Remember Me & Forgot Password -->
-                                <div class="flex justify-between flex-auto w-full">
-                                    <div class="block pl-6 mb-4">
-                                        <a class="text-sm text-gray-600 underline hover:text-gray-900"
-                                            href="{{ route('login') }}">
-                                            {{ __('Already registered?') }}
-                                        </a>
-                                    </div>
-
+                                <div class="flex justify-center flex-auto w-full">
                                     <x-admin.submit-button>
-                                        {{ __('Register') }}
+                                        {{ __('Next') }}
                                     </x-admin.submit-button>
                                 </div>
                             </div>

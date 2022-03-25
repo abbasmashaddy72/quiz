@@ -10,8 +10,6 @@ class QuizImages extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'simple-tailwind';
-
     public function render()
     {
         $images = Image::where('model', 'Topic')->paginate(1);

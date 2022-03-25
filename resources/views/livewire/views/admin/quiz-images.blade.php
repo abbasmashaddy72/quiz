@@ -2,7 +2,7 @@
     @foreach ($images as $item)
         <div class="flex flex-wrap justify-center">
             <img src="{{ asset('storage' . str_replace('public', '', $item->image)) }}"
-                class="h-auto max-w-full p-1 bg-white border rounded-lg shadow-inner" />
+                class="max-w-full p-1 bg-white border rounded-lg shadow-inner" />
         </div>
     @endforeach
 

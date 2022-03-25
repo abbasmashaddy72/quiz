@@ -32,14 +32,25 @@
             @include('layouts.admin.sidebar')
         @endrole
         <main class="flex flex-col justify-between h-screen main-content" x-data="{ data: true }">
-            <div class="relative">
-                @include('layouts.admin.navbar')
-            </div>
-            <div class="p-6 py-0 mt-4 mb-auto lg:p-10 lg:py-0 container-fluid">
-                <div class="flex flex-wrap">
-                    {{ $slot }}
+            @role('competitor')
+            @else
+                <div class="relative">
+                    @include('layouts.admin.navbar')
                 </div>
-            </div>
+            @endrole
+            @role('competitor')
+                <div class="container-fluid">
+                    <div class="flex flex-wrap">
+                        {{ $slot }}
+                    </div>
+                </div>
+            @else
+                <div class="p-6 py-0 mt-4 mb-auto lg:p-10 lg:py-0 container-fluid">
+                    <div class="flex flex-wrap">
+                        {{ $slot }}
+                    </div>
+                </div>
+            @endrole
             @include('layouts.admin.footer')
         </main>
     </div>

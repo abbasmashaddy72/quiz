@@ -19,8 +19,16 @@ class QuizQuestions extends Component
 
     public function mount()
     {
-        $this->data = Topic::findOrFail($this->selectedId)->with('questions')->withCount('questions')->get();
-        $this->quizSize = $this->data->first()->questions_count;
+        $this->data = Topic::where('id', $this->selectedId)->get();
+        $this->data->transform(function ($category) {
+            $category->questions = Question::whereHas('topic', function ($q) use ($category) {
+                $q->where('id', $category->id);
+            })->inRandomOrder()
+                ->take(10)
+                ->get();
+            return $category;
+        });
+        $this->quizSize = $this->data->first()->questions->count();
 
         $this->count = 1;
         $this->currentQuestion = $this->getNextQuestion();
@@ -34,7 +42,6 @@ class QuizQuestions extends Component
             $this->isDisabled = false;
         }
     }
-
 
     public function getNextQuestion()
     {

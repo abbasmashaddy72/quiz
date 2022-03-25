@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->bigInteger('phone')->after('email');
             $table->string('interest')->default(0)->after('phone');
+            $table->date('dob')->nullable()->after('interest');
         });
     }
 
@@ -27,7 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('phone');
+            $table->dropColumn('interest');
+            $table->dropColumn('dob');
         });
     }
 };

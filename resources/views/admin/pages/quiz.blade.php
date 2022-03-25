@@ -1,8 +1,9 @@
 <x-app-layout>
-    <x-admin.table-card>
-        <x-slot name="title">
-            {{ __('15th Shaban Quiz') }}
-        </x-slot>
-        @livewire('views.admin.quiz-images')
-    </x-admin.table-card>
+    <div class="w-full pb-8">
+        <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-lg ">
+            <div class="flex-auto">
+                @livewire('views.admin.quiz-images')
+            </div>
+        </div>
+    </div>
 </x-app-layout>
